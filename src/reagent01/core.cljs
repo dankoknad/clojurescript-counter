@@ -11,36 +11,18 @@
 
 (defn counting-component []
   [:div {:style {:textAlign "center"}}
-    [:div "The atom " [:code "$count"] " has value:"
-      [:div {:style {:color "#f0f" :fontWeight 700}} @s/$count]
-    ]
-    [:hr]
+    [:div "The atom " [:code "$count"] " has value:" @s/$count]
+    [:br]
     [:div
-       [:input {
-         :type "button"
-         :value "Dec"
-         :on-click #(swap! s/$count - @s/$step)
-      }]
-      [:input {
-         :type "button"
-         :value "Reset"
-         :on-click #(reset! s/$count 0)
-         :style {:margin "0 4px"} 
-      }]
-      [:input {
-         :type "button"
-         :value "Inc"
-         :on-click #(swap! s/$count + @s/$step)
-      }]
-      [:hr]
+      [c/btn "Decrement" #(swap! s/$count - @s/$step)]
+      [c/btn "Reset" #(reset! s/$count 0)]
+      [c/btn "Increment" #(swap! s/$count + @s/$step)]
+      [:br][:br]
       [:span "Step: "]
-      [:input {
-         :type "number"
-         :value @s/$step
-         :on-change #(reset! s/$step (-> % .-target .-value int))
-      }]
-      [:hr]
-      [c/welcome "Danko"]
+      [c/num-input
+        @s/$step
+        #(reset! s/$step (-> % .-target .-value int))
+      ]
     ]
   ])
 
