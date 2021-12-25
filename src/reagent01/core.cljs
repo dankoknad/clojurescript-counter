@@ -12,20 +12,22 @@
 ;; Views
 
 (defn counter []
+  (println s/state)
   [mui/grid m/container-props 
-    [mui/grid {:item true} "The atom " [:code "$count"] " has value:"]
-    [mui/grid {:item true} [mui/paper m/paper-props @s/$count]]
-    [mui/grid {:item true} 
-      [c/btn "Decrement" #(swap! s/$count - @s/$step)]
-      [c/btn "Reset" #(reset! s/$count 0) false]
-      [c/btn "Increment" #(swap! s/$count + @s/$step)]]
-
+    [mui/grid {:item true} "Simple Counter"]
+    [mui/grid {:item true} [mui/paper m/paper-props [@s/state :count]]]
     [mui/grid {:item true} 
       [:<> "Step: "]
       [c/num-input
-        @s/$step
-        #(reset! s/$step (-> % .-target .-value int))
+        (@s/state :step)
+        #(swap! s/state assoc-in [:step] (-> % .-target .-value int))
+        (@s/state :input-disabled)
       ]]
+
+    [mui/grid {:item true} 
+      [c/btn "Decrement" #(swap! s/state assoc-in [:count] (- (@s/state :count) (@s/state :step))) (@s/state :decrement-btn-disabled)]
+      [c/btn "Reset" #(swap! s/state assoc-in [:count] (@s/state :initial)) (@s/state :reset-btn-disabled) "error"]
+      [c/btn "Increment" #(swap! s/state assoc-in [:count] (+ (@s/state :count) (@s/state :step))) (@s/state :increment-btn-disabled)]]
     ]
   )
 

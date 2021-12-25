@@ -5,10 +5,10 @@
      [reagent-mui.material.button :refer [button]]
   ))
 
-(defn btn [label handle-click disabled]
+(defn btn [label handle-click disabled color]
   [button
-    {:variant "contained"
-     :color "primary"
+    {:variant "outlined"
+     :color (or color "primary")
      :style {:marginLeft 10}
      :on-click handle-click
      :disabled disabled
@@ -16,13 +16,14 @@
     label
   ])
 
-(defn num-input [val handle-change]
+(defn num-input [val handle-change disabled]
   [mui/text-field
     {:type "number"
      :size "small"
      :color "primary"
      :autoFocus true
      :value val
+     :disabled disabled
      :on-change handle-change
      :style {:verticalAlign "middle"}
     }

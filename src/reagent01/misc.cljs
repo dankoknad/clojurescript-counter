@@ -5,7 +5,7 @@
    :direction "column"
    :justifyContent "center"
    :alignItems "center"
-   :rowSpacing "40px"
+   :rowSpacing "20px"
    :classes {:root "container"}})
 
 (def paper-props

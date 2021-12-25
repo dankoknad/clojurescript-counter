@@ -2,6 +2,12 @@
     (:require
       [reagent.core :as r]))
 
-(def $count (r/atom 0))
-(def $step (r/atom 5))
+(def state (r/atom
+   {:initial 0 ;; so we can reset counter
+    :count 0 ;; same as initial
+    :step 5
+    :decrement-btn-disabled false
+    :increment-btn-disabled false
+    :reset-btn-disabled false
+    :input-disabled false}))
 
