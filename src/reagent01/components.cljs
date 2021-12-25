@@ -5,12 +5,13 @@
      [reagent-mui.material.button :refer [button]]
   ))
 
-(defn btn [label handle-click]
+(defn btn [label handle-click disabled]
   [button
     {:variant "contained"
      :color "primary"
      :style {:marginLeft 10}
      :on-click handle-click
+     :disabled disabled
     }
     label
   ])
@@ -23,6 +24,7 @@
      :autoFocus true
      :value val
      :on-change handle-change
+     :style {:verticalAlign "middle"}
     }
   ]
 )

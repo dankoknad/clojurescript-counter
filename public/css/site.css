@@ -1,12 +1,21 @@
 body {
   font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
-  width: 660px;
-  margin: 0 auto;
-  padding-top: 72px;
   -webkit-font-smoothing: antialiased;
   font-size: 1.125em;
   color: #333;
   line-height: 1.5em;
+}
+
+.container {
+  height: 100vh;
+}
+
+.result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 75px;
+  padding: 8px 16px;
 }
 
 h1, h2, h3 {
