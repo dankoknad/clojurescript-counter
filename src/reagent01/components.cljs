@@ -9,7 +9,7 @@
   [button
     {:variant "outlined"
      :color (or color "primary")
-     :style {:marginLeft 10}
+     :style {:margin-left 10 :text-transform "none"}
      :on-click handle-click
      :disabled disabled
     }
@@ -25,7 +25,7 @@
      :value val
      :disabled disabled
      :on-change handle-change
-     :style {:verticalAlign "middle"}
+     :style {:vertical-align "middle"}
     }
   ]
 )

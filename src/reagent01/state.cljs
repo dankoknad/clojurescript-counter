@@ -8,6 +8,5 @@
     :step 5
     :decrement-btn-disabled false
     :increment-btn-disabled false
-    :reset-btn-disabled false
     :input-disabled false}))
 
