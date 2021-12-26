@@ -6,7 +6,7 @@
    {:initial 0 ;; so we can reset counter
     :count 0 ;; same as initial
     :step 5
-    :decrement-btn-disabled false
-    :increment-btn-disabled false
+    :dec-btn-disabled false
+    :inc-btn-disabled false
     :input-disabled false}))
 
