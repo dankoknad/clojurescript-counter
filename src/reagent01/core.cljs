@@ -19,7 +19,7 @@
   (def inc-btn-disabled (:inc-btn-disabled @s/state))
 
   [mui/grid u/container-props
-    [mui/grid {:item true} "Simple Counter"]
+    [:mui/grid>h3 {:item true} "Simple Counter"]
 
     [mui/grid {:item true :style {:position "relative"}}
       [mui/paper u/paper-props _count]
@@ -29,7 +29,7 @@
       ]]
 
     [mui/grid {:item true}
-      [:<> "Step: "]
+      [:div>em "Step: "]
       [c/num-input
         step
         #(swap! s/state assoc-in [:step] (-> % .-target .-value int))
