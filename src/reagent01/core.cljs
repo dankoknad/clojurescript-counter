@@ -3,7 +3,10 @@
     [reagent.core :as r]
     [reagent.dom :as d]
     [reagent01.state :as s]
-    [reagent-mui.components :as mui]
+    [reagent-mui.material.grid :refer [grid]]
+    [reagent-mui.material.paper :refer [paper]]
+    [reagent-mui.icons.add :refer [add]]
+    [reagent-mui.icons.remove :refer [remove]]
     [reagent01.components :as c]
     [reagent01.utils :as u]))
 
@@ -18,31 +21,32 @@
   (def dec-btn-disabled (:dec-btn-disabled @s/state))
   (def inc-btn-disabled (:inc-btn-disabled @s/state))
 
-  [mui/grid u/container-props
-    [:mui/grid>h3 {:item true} "Simple Counter"]
+  [grid u/container-props
+    [grid [:h3 {:item "true"} "Simple Counter"]]
 
-    [mui/grid {:item true :style {:position "relative"}}
-      [mui/paper u/paper-props _count]
+    [grid {:item true :style {:position "relative"}}
+      [:div>em "Result:"]
+      [paper u/paper-props _count]
       [c/reset-btn
         #(swap! s/state assoc-in [:count] initial)
         (== _count initial)
       ]]
 
-    [mui/grid {:item true}
-      [:div>em "Step: "]
+    [grid {:item true}
+      [:div>em "Step:"]
       [c/num-input
         step
         #(swap! s/state assoc-in [:step] (-> % .-target .-value int))
         input-disabled
       ]]
 
-    [mui/grid {:item true}
+    [grid {:item true}
       [c/btn
-        "Decrement"
+        [remove]
         #(swap! s/state assoc-in [:count] (- _count step))
         dec-btn-disabled]
       [c/btn
-        "Increment"
+        [add]
         #(swap! s/state assoc-in [:count] (+ _count step))
          inc-btn-disabled
       ]]

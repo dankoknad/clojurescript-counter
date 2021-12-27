@@ -11,7 +11,7 @@
                   :classes {:root "result"}})
 
 (def reset-btn-style {:position "absolute"
-                      :top 26
+                      :bottom 4
                       :right -40
                       :color "#fff"})
 
