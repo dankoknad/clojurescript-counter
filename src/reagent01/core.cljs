@@ -8,6 +8,7 @@
     [reagent-mui.icons.add :refer [add]]
     [reagent-mui.icons.remove :refer [remove]]
     [reagent01.components :as c]
+    [reagent01.settings-component :as stc]
     [reagent01.utils :as u]))
 
 ;; -------------------------
@@ -22,7 +23,8 @@
   (def inc-btn-disabled (:inc-btn-disabled @s/state))
 
   [grid u/container-props
-    [grid [:h3 {:item "true"} "Simple Counter"]]
+    
+    [grid [:h3 {:item "true"} "Simple Counter " [stc/settings-component]]]
 
     [grid {:item true :style {:position "relative"}}
       [:div>em "Result:"]
